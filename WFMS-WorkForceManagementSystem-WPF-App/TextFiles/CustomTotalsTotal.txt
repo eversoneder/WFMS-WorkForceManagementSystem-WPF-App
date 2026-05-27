@@ -1,0 +1,18 @@
+----- Custom Employee Weekly Report -----
+Generated on: 2026-05-25 13:04:02
+
+DEPARTMENT: FINANCE
+   Total Hours Worked: 65.00 Hours.
+
+DEPARTMENT: MARKETING
+   Total Hours Worked: 147.00 Hours.
+
+DEPARTMENT: HUMAN RESOURCES
+   Total Hours Worked: 106.00 Hours.
+
+DEPARTMENT: ENGINEERING
+   Total Hours Worked: 332.00 Hours.
+
+DEPARTMENT: MANAGEMENT
+   Total Hours Worked: 112.00 Hours.
+

@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="WFMS_WorkForceManagementSystem_WPF_App.Views.DataDashboardPanel" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WFMS_WorkForceManagementSystem_WPF_App.Views" 
+             mc:Ignorable="d" 
+             Height="650" Width="700">
+    <Grid>
+        
+        <!-- 1 & 2: Top Selection Area -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Top Checkboxes Selection Row -->
+            <RowDefinition Height="1.2*"/>
+            <!-- 3. File Data Display Grid Row -->
+            <RowDefinition Height="1*"/>
+            <!-- 4. File Metrics Display Grid Row -->
+            <RowDefinition Height="Auto"/>
+            <!-- Bottom Buttons Row -->
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*"/>
+                <!-- Column 0: Small Logo Space (35%) -->
+                <ColumnDefinition Width="5*"/>
+                <!-- Invisible Space Gap (3%) -->
+                <ColumnDefinition Width="31*"/>
+                <!-- Column 1: Departments List Space (31%) -->
+                <ColumnDefinition Width="1*"/>
+                <!-- Invisible Space Gap (3%) -->
+                <ColumnDefinition Width="28*"/>
+                <!-- Column 2: Metrics Checklist Space (28%) -->
+            </Grid.ColumnDefinitions>
+
+            
+
+            <Border Grid.Column="0" Background="#F0F4F8" CornerRadius="20">
+                <Image Source="/Images/Logo-white-bg.png" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center" 
+            Stretch="Uniform" 
+            MaxWidth="220"/>
+            </Border>
+
+            <!-- "2. Select Departments" area -->
+            <StackPanel Grid.Column="2" Margin="0,0,20,0">
+                <TextBlock Text="1. Select Departments:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <ListBox x:Name="LstDepartments" Height="100" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding Name}" IsChecked="{Binding IsChecked}" Checked="FilterChanged" Unchecked="FilterChanged"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+
+            
+
+
+            <!-- "2. Select Metrics to Display" area -->
+            <StackPanel Grid.Column="4">
+                <TextBlock Text="2. Select Metrics to Display:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <CheckBox x:Name="ChkAvg" Content="Average Employee Hours" IsChecked="True" Margin="0,3" Checked="FilterChanged" Unchecked="FilterChanged"/>
+                <CheckBox x:Name="ChkTotal" Content="Total Hours Worked" IsChecked="True" Margin="0,3" Checked="FilterChanged" Unchecked="FilterChanged"/>
+                <CheckBox x:Name="ChkMost" Content="Employee with Most Hours" IsChecked="True" Margin="0,3" Checked="FilterChanged" Unchecked="FilterChanged"/>
+            </StackPanel>
+        </Grid>
+        
+        <!-- - 3. File Data Display (Raw, Unfiltered Employee Records) -->
+        <Grid Grid.Row="1" Margin="0,5,0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Text="3. File Data Display:" FontWeight="Bold" Margin="0,0,0,5"/>
+            <DataGrid Grid.Row="1" x:Name="DgridRawData" AutoGenerateColumns="False" IsReadOnly="True" Background="White" VerticalScrollBarVisibility="Visible" HeadersVisibility="Column" RowHeaderWidth="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="2*"/>
+                    <DataGridTextColumn Header="Department" Binding="{Binding Department}" Width="2*"/>
+                    <DataGridTextColumn Header="Monday" Binding="{Binding HoursRecord.HoursList[0]}" Width="1*"/>
+                    <DataGridTextColumn Header="Tuesday" Binding="{Binding HoursRecord.HoursList[1]}" Width="1*"/>
+                    <DataGridTextColumn Header="Wednesday" Binding="{Binding HoursRecord.HoursList[2]}" Width="1*"/>
+                    <DataGridTextColumn Header="Thursday" Binding="{Binding HoursRecord.HoursList[3]}" Width="1*"/>
+                    <DataGridTextColumn Header="Friday" Binding="{Binding HoursRecord.HoursList[4]}" Width="1*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <!-- - 4. File Metrics Display (Dynamically Filtered Calculations) -->
+        <Grid Grid.Row="2" Margin="0,5,0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="4. File Metrics Display:" FontWeight="Bold" Margin="0,0,0,5"/>
+            <DataGrid Grid.Row="1" x:Name="DgridDisplay" AutoGenerateColumns="True" IsReadOnly="True" Background="White" VerticalScrollBarVisibility="Visible" HeadersVisibility="Column" ColumnWidth="*"/>
+        </Grid>
+        
+        <!-- Action Buttons -->
+        <Grid Grid.Row="3" Margin="0,5,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="48*"/>
+                <!-- Left Button Space (48%) -->
+                <ColumnDefinition Width="4*"/>
+                <!-- Invisible Middle Gap Space (4%) -->
+                <ColumnDefinition Width="48*"/>
+                <!-- Right Button Space (48%) -->
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" x:Name="BtnGenerate" Content="Generate Custom Metrics File" Height="35" Click="BtnGenerate_Click" Background="#067BF9" Foreground="White" FontWeight="Bold"/>
+            <Button Grid.Column="2" x:Name="BtnBack" Content="Close &amp; Main Menu" Height="35" Click="BtnBack_Click"/>
+        </Grid>
+        
+    </Grid>
+</UserControl>

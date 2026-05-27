@@ -1,0 +1,13 @@
+----- Custom Employee Weekly Report -----
+Generated on: 2026-05-25 13:04:29
+
+DEPARTMENT: PROFESSOR
+   Average employee hours worked: 40.00 Hours.
+   Total Hours Worked: 40.00 Hours.
+   Employee with Most Hours Worked: Alan Harnett has worked 40.00 Hours.
+
+DEPARTMENT: STUDENT
+   Average employee hours worked: 31.36 Hours.
+   Total Hours Worked: 345.00 Hours.
+   Employee with Most Hours Worked: Jack Gavin has worked 33.00 Hours.
+

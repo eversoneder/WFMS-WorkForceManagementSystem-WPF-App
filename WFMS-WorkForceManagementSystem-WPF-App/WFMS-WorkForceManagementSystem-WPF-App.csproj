@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <RootNamespace>WFMS_WorkForceManagementSystem_WPF_App</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Logo-white-bg-jpg.jpg" />
+    <None Remove="Images\Logo-white-bg.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TextFiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Logo-white-bg-jpg.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Logo-white-bg.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TextFiles\SD-TA-001-A_OrganisationWeeklyTimesheet.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
