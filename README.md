@@ -1,6 +1,6 @@
 # WFMS - Workforce Management System
 
-<img src="Images/WFMS-gif-2x.gif" alt="WFMS App" width="800">
+<img src="WFMS-WorkForceManagementSystem-WPF-App/Images/WFMS-gif-2x.gif" alt="WFMS App" width="800">
 
 A desktop data-dashboard application built in C# using the WPF framework and the Model-View-Controller (MVC) architectural pattern. It automates company timesheet ingestion, visualizes department workloads, and exports structured analytical reports.
 
